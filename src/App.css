@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -21,6 +22,32 @@
 
 .App-link {
   color: #61dafb;
+}
+
+
+.book-set {
+  display: inline-block;
+  margin: 20px;
+}
+
+.book-tile {
+  border-radius: 10px;
+  border: 1px solid #D3D3D3;
+  box-shadow: 5px #D3D3D3;
+  background-color:   #F5F5F5;
+  display: inline-block;
+  margin: 10px;
+  width: 25%;
+  text-align: center;
+  position: relative;
+  font-size: 12px;
+  padding: 10px;
+
+
+}
+.book-tile img{
+    border-radius: 4px;
+
 }
 
 @keyframes App-logo-spin {

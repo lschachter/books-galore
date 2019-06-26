@@ -1,11 +1,11 @@
-import React , {Component} from 'react';
+import React from 'react';
 
 import BookTile from "./book-tile"
 
 export default class BookSet extends React.Component{
   render(){
     return (
-      <div>
+      <div className="book-set">
         {
           this.props.books.map((book, i) => {
             return (

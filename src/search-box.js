@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React from "react"
 
 import BookSet from "./book-set"
 
@@ -51,17 +51,20 @@ export default class SearchBox extends React.Component {
     return books_json;
   }
 
+
+  // this should send books back up to app, not logical parent for book set
   render() {
     const books_received = this.state.books !== undefined;
     return (
     	<div>
 	      <form onSubmit={this.handleSubmit}>
 	        <label>
-	          Search Topic
+	           
 	          <input 
 	          	type="text" 
 	          	name="searchTopic"
-	          	value={this.state.searchTopic === "" ? "Enter a topic" : this.state.searchTopic}
+              placeholder="Enter a topic"
+	          	value={this.state.searchTopic}
 	          	onChange={this.handleChange} 
 	          />
 	        </label>
@@ -79,8 +82,3 @@ export default class SearchBox extends React.Component {
     )
   }
 }
-
-
-
-
-
