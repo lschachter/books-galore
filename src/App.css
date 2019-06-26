@@ -24,6 +24,12 @@
   color: #61dafb;
 }
 
+.instruction {
+  width: 80%;
+  margin-left: 10%;
+  padding: 5px;
+  line-height: 1.5;
+}
 
 .book-set {
   display: inline-block;
@@ -65,7 +71,12 @@
   vertical-align: middle;
 }
 
+@media only screen and (max-width: 600px) {
+  .book-tile {
+    width: 50%;
+  }
 
+}  
 
 @keyframes App-logo-spin {
   from {
