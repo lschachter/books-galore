@@ -42,8 +42,7 @@ export default class SearchBox extends React.Component {
 
   search = async () => {
     let topic = this.state.searchTopic;
-    const api_key = `${process.env.REACT_APP_GBA_API_KEY}`;
-    const api_url = "https://www.googleapis.com/books/v1/volumes?q=" + topic + "&key=" + api_key;
+    const api_url = "https://www.googleapis.com/books/v1/volumes?q=" + topic;
     const response = await fetch(api_url);
     const books_json = await response.json();
 
