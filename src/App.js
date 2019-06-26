@@ -11,15 +11,8 @@ function App() {
         <h1>
           Books Galore
         </h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <SearchBox />
 
     </div>
   );

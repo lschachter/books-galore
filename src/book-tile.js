@@ -10,7 +10,10 @@ export default class BookTile extends React.Component {
 	render() {
 		return (
 			<li className="book-tile">
-				<a href={this.url}>
+				<a 
+					href={this.url}
+					target = "_blank"
+          rel="noopener noreferrer">
 					<img src={this.imgs !== undefined ? this.imgs.thumbnail : ""} 
 					alt={this.alt}/>
 				</a>

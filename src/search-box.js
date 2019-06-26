@@ -1,8 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import BookTile from "./book-tile"
-
+import BookSet from "./book-set"
 
 export default class SearchBox extends React.Component {
 	constructor(props) {
@@ -33,36 +32,31 @@ export default class SearchBox extends React.Component {
     	alert(`Please enter a topic to search`);
     }
     else {
-    	this.search()
-    		.then(books_json =>
-    			this.setState({
-    				books: books_json
-    			}))
-    		.catch(err => console.log(err));
+    	this.search().then(books_json => {
+          this.setState({
+            books: books_json
+          });
+          console.log("state: ", this.state.books);
+        })
+        .catch(err => console.log(err));
     }
   }
 
-  /*search = event => {
-  	let topic = this.state.searchTopic;
-  	console.log(topic);
-  	const api_url = "https://www.googleapis.com/books/v1/volumes?q=" + topic;
-
-  	fetch(api_url, {method: "GET"}).then(response => response.json())
-  		.then(json => {
-  			let {books} = json;
-  			this.setState({ books: books });
-  			
-  		});
-		console.log(this.state.books);
-  }*/
-
   search = async () => {
-  	const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=" + this.state.searchTopic);
-  	const books_json = await response.json();
+    let topic = this.state.searchTopic;
+    const api_key = `${process.env.REACT_APP_GBA_API_KEY}`;
+    const api_url = "https://www.googleapis.com/books/v1/volumes?q=" + topic + "&key=" + api_key;
+    const response = await fetch(api_url);
+    const books_json = await response.json();
 
-  	if (response.status !== 200) throw Error(books_json.message);
-  	return books_json;
+    console.log('url: ', api_url);
+    console.log(books_json);
+
+    if (response.status !== 200) throw Error(books_json.message);
+    return books_json;
   }
+
+  
 
   render() {
     return (
@@ -79,11 +73,7 @@ export default class SearchBox extends React.Component {
 	        </label>
 	        <button type="submit">Submit</button>
 	      </form>
-	      <ul>
-	      	{this.state.books.map(book => 
-	      		<BookTile {...book}/>
-	      		)}
-	      </ul>
+	      <BookSet books={this.state.books} />
 	    </div>
     )
   }
