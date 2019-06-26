@@ -4,10 +4,11 @@ export default class BookTile extends React.Component {
 	render() {
 		let book_info = this.props.book.volumeInfo;
 		let alt = book_info.title + " front cover";
-		console.log(parseInt(this.props.key_i) % 2);
 
 		let authors = book_info.authors;
-		if (authors.length > 1) {
+		if (authors === undefined) {
+			authors = "";
+		}else if (authors.length > 1) {
 			authors = authors.join(", ");
 		}
 
