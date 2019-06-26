@@ -1,5 +1,4 @@
-import PropTypes from "prop-types"
-import React from "react"
+import React, {Component} from "react"
 
 import BookSet from "./book-set"
 
@@ -32,12 +31,11 @@ export default class SearchBox extends React.Component {
     	alert(`Please enter a topic to search`);
     }
     else {
-    	this.search().then(books_json => {
+    	this.search()
+        .then(books_json =>
           this.setState({
-            books: books_json
-          });
-          console.log("state: ", this.state.books);
-        })
+            books: books_json.items
+          }))
         .catch(err => console.log(err));
     }
   }
@@ -49,16 +47,12 @@ export default class SearchBox extends React.Component {
     const response = await fetch(api_url);
     const books_json = await response.json();
 
-    console.log('url: ', api_url);
-    console.log(books_json);
-
     if (response.status !== 200) throw Error(books_json.message);
     return books_json;
   }
 
-  
-
   render() {
+    const books_received = this.state.books !== undefined;
     return (
     	<div>
 	      <form onSubmit={this.handleSubmit}>
@@ -67,13 +61,20 @@ export default class SearchBox extends React.Component {
 	          <input 
 	          	type="text" 
 	          	name="searchTopic"
-	          	value={this.state.searchTopic}
+	          	value={this.state.searchTopic === "" ? "Enter a topic" : this.state.searchTopic}
 	          	onChange={this.handleChange} 
 	          />
 	        </label>
 	        <button type="submit">Submit</button>
 	      </form>
-	      <BookSet books={this.state.books} />
+
+        {books_received ? (
+          <BookSet books={this.state.books} />
+          ) : (
+          <div></div>
+          )
+        }
+	      
 	    </div>
     )
   }

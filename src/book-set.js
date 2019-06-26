@@ -8,9 +8,8 @@ export default class BookSet extends React.Component{
       <div>
         {
           this.props.books.map((book, i) => {
-            let {title, imgs , url} = book.volumeInfo
             return (
-              <BookTile {...book}/>
+              <BookTile book={book} key_i={i} />
             );
           })
         }
