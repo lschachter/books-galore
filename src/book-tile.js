@@ -19,12 +19,18 @@ export default class BookTile extends React.Component {
 					target = "_blank"
           rel="noopener noreferrer"
           >
-					<img src={book_info.imageLinks !== undefined ? book_info.imageLinks.thumbnail : ""} 
-					alt={alt}/>
+          <div className="book-img-container">
+						<img 
+							src={book_info.imageLinks !== undefined ? book_info.imageLinks.thumbnail : ""} 
+							alt={alt}
+						/>
+					</div>
 				</a>
-				<p><a href={book_info.infoLink}>{book_info.title}</a></p>
-				<p className="title-text"><strong>By: </strong>{authors}</p>
-				<p><strong>Publisher: </strong>{book_info.publisher}</p>
+				<div className="book-content-container">
+					<p><a href={book_info.infoLink}>{book_info.title}</a></p>
+					<p className="title-text"><strong>By: </strong>{authors}</p>
+					<p><strong>Publisher: </strong>{book_info.publisher}</p>
+				</div>
 			</div>
 		)
 	}
