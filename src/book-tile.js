@@ -8,12 +8,12 @@ export default class BookTile extends React.Component {
 		let authors = book_info.authors;
 		if (authors === undefined) {
 			authors = "";
-		}else if (authors.length > 1) {
+		} else if (authors.length > 1) {
 			authors = authors.join(", ");
 		}
 
 		return (
-			<div className="book-tile" key={this.props.key_i}>
+			<div className="book-tile">
 				<a 
 					href={book_info.infoLink}
 					target = "_blank"
@@ -28,7 +28,7 @@ export default class BookTile extends React.Component {
 				</a>
 				<div className="book-content-container">
 					<p><a href={book_info.infoLink}>{book_info.title}</a></p>
-					<p className="title-text"><strong>By: </strong>{authors}</p>
+					<p><strong>By: </strong>{authors}</p>
 					<p><strong>Publisher: </strong>{book_info.publisher}</p>
 				</div>
 			</div>

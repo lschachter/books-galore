@@ -2,10 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Books Galore
 
+[(See it in action)](https://books-galore.herokuapp.com/)
 
-Books Galore uses the [Google Books API](https://developers.google.com/books/docs/overview) to return a list of books with title, author, publishing company, and picture, based on the user's search parameter. It is built with [React]() (including React's default starter code) and will be deployed using [Heroku](https://www.heroku.com/home).
+Books Galore uses the [Google Books API](https://developers.google.com/books/docs/overview) to return a list of books with title, author, publishing company, and picture, based on the user's search parameter. It is built with [React](https://reactjs.org/) (including React's default starter code) and will be deployed using [Heroku](https://www.heroku.com/home).
 
-This will be a single-page app.
 
 **For [8th Light](https://8thlight.com/)'s Crafter Technical Assessment**
 

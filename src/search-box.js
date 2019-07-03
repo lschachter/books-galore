@@ -1,6 +1,7 @@
 import React from "react"
 
 import BookSet from "./book-set"
+import { search } from "./utilities/google_books_search";
 
 export default class SearchBox extends React.Component {
 	constructor(props) {
@@ -9,10 +10,8 @@ export default class SearchBox extends React.Component {
       searchTopic: "",
       books: []
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.search = this.search.bind(this);
   }
 
   handleChange = event => {
@@ -31,7 +30,7 @@ export default class SearchBox extends React.Component {
     	alert(`Please enter a topic to search`);
     }
     else {
-    	this.search()
+    	search(this.state.searchTopic, 0)
         .then(books_json =>
           this.setState({
             books: books_json.items
@@ -39,17 +38,6 @@ export default class SearchBox extends React.Component {
         .catch(err => console.log(err));
     }
   }
-
-  search = async () => {
-    let topic = this.state.searchTopic;
-    const api_url = "https://www.googleapis.com/books/v1/volumes?q=" + topic;
-    const response = await fetch(api_url);
-    const books_json = await response.json();
-
-    if (response.status !== 200) throw Error(books_json.message);
-    return books_json;
-  }
-
 
   // this should send books back up to app, not logical parent for book set
   render() {
@@ -71,7 +59,7 @@ export default class SearchBox extends React.Component {
 	      </form>
 
         {books_received ? (
-          <BookSet books={this.state.books} />
+          <BookSet books={this.state.books} searchTopic={this.state.searchTopic} />
           ) : (
           <div></div>
           )
