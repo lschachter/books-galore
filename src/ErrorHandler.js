@@ -18,6 +18,12 @@ export default class ErrorHandler extends React.Component {
   }
 
   render() {
-    return this.state.errorOccurred ? <h1>Something went wrong!</h1> : this.props.children
+    return (
+    	this.state.errorOccurred ? 
+    	<h1 className="instruction">
+    		Something went wrong! Please reload the page.
+    	</h1> : 
+    	this.props.children
+    )
   }
 }

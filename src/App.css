@@ -1,8 +1,8 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
+.app-header {
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
@@ -11,10 +11,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .instruction {
@@ -26,6 +22,7 @@
 
 .book-set {
   margin: 20px;
+  padding-bottom: 80px;
   vertical-align: bottom;
 }
 
@@ -44,7 +41,7 @@
   vertical-align: bottom;
 }
 
-.book-content-container {
+.book-content-container1 {
   height: 100px;
   background-color: #F0F0F0;
   overflow: scroll;
@@ -65,6 +62,30 @@
   vertical-align: middle;
   max-height: 100%;
   width: auto;
+}
+
+.with-tool-tip::after {
+  position: absolute;
+  left: 50%;
+  display: none;
+}
+
+.with-tool-tip::after {
+  content: attr(data-tooltip);
+  width: 190px;
+  margin-left: -100px;
+  padding: 5px;
+  border-radius: 8px;
+  transform: translateY(-75%); 
+}
+
+.with-tool-tip:hover::after {
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #D3D3D3;
+  box-shadow: 0 3px 0 0 #D3D3D3;
+  background-color: #F5F5F5;
+
 }
 
 @media only screen and (max-width: 600px) {

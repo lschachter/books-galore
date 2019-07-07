@@ -1,7 +1,7 @@
 import React from "react"
 
-import BookSet from "./book-set"
-import { search } from "./utilities/google_books_search";
+import BookSet from "./BookSet"
+import { search } from "./utilities/search";
 
 export default class SearchBox extends React.Component {
 	constructor(props) {
@@ -14,8 +14,8 @@ export default class SearchBox extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = event => {
-    const target = event.target
+  handleChange = e => {
+    const target = e.target
     const value = target.value
     const name = target.name
 
@@ -24,8 +24,8 @@ export default class SearchBox extends React.Component {
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit = e => {
+    e.preventDefault()
 
     if (this.state.searchTopic === "") {
     	alert(`Please enter a topic to search`);
@@ -36,7 +36,8 @@ export default class SearchBox extends React.Component {
           this.setState({
             books: books_json.items
           }))
-        .catch(err => console.log(err));
+        .catch(err => console.log(err)
+      );
     }
   }
 
@@ -47,7 +48,6 @@ export default class SearchBox extends React.Component {
     	<div>
 	      <form onSubmit={this.handleSubmit}>
 	        <label>
-	           
 	          <input 
 	          	type="text" 
 	          	name="searchTopic"
@@ -58,15 +58,13 @@ export default class SearchBox extends React.Component {
 	        </label>
 	        <button type="submit">Submit</button>
 	      </form>
-
-        {books_received ? (
-          <BookSet books={this.state.books} searchTopic={this.state.searchTopic}
+        { books_received ? (
+            <BookSet books={this.state.books} searchTopic={this.state.searchTopic}
             startIndex={10} />
           ) : (
-          <div></div>
+            <div></div>
           )
-        }
-	      
+        }  
 	    </div>
     )
   }
