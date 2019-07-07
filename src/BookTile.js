@@ -3,21 +3,6 @@ import React from 'react';
 import { cropInfoStr } from "./utilities/cropInfoStr";
 
 export default class BookTile extends React.Component {
-	constructor(props) {
-    super(props);
-    this.state = {
-    	isHovering: false
-    };
-    this.handleHover = this.handleHover.bind(this);
-  }
-
-  handleHover = e => {
-  	this.setState({
-  		isHovering: !this.state.isHovering
-  	});
-  }
-
-
 	render() {
 		let bookInfo = this.props.book.volumeInfo;
 		let alt = bookInfo.title + " front cover";
@@ -35,13 +20,9 @@ export default class BookTile extends React.Component {
 		let truncAuthors = cropInfoStr(authors, 25);
 		let truncPubs = cropInfoStr(bookInfo.publisher, 20);
 
-		let fullInfo = bookInfo.title + "\nBy: " + authors + "\nPublisher: " + bookInfo.publisher;
-
 		return (
 			<div className="book-tile">
-				<a className="with-tool-tip" 
-					data-tooltip={bookInfo.title}
-					href={bookInfo.infoLink}
+				<a href={bookInfo.infoLink}
 					target = "_blank"
           rel="noopener noreferrer">
           { bookInfo.imageLinks !== undefined ? ( 
@@ -56,7 +37,7 @@ export default class BookTile extends React.Component {
 	          )
           }
 				</a>
-				<div className="book-content-container with-tool-tip" data-tooltip={fullInfo}>
+				<div>
 					<p>
 						<a href={bookInfo.infoLink}
 							target = "_blank"

@@ -41,51 +41,18 @@
   vertical-align: bottom;
 }
 
-.book-content-container1 {
-  height: 100px;
-  background-color: #F0F0F0;
-  overflow: scroll;
-  margin: 10px;
-  padding: 5px;
-  box-shadow: inset 0 0 5px #D3D3D3;
-}
-
 .book-img-container {
   padding-top: 10px;
   height: 200px;
   vertical-align: middle;
 }
 
-.book-tile img{
+.book-tile img {
   border-radius: 4px;
   box-shadow: 3px 3px 3px 3px #D3D3D3;
   vertical-align: middle;
   max-height: 100%;
   width: auto;
-}
-
-.with-tool-tip::after {
-  position: absolute;
-  left: 50%;
-  display: none;
-}
-
-.with-tool-tip::after {
-  content: attr(data-tooltip);
-  width: 190px;
-  margin-left: -100px;
-  padding: 5px;
-  border-radius: 8px;
-  transform: translateY(-75%); 
-}
-
-.with-tool-tip:hover::after {
-  display: block;
-  border-radius: 5px;
-  border: 1px solid #D3D3D3;
-  box-shadow: 0 3px 0 0 #D3D3D3;
-  background-color: #F5F5F5;
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -95,11 +62,3 @@
 
 }  
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
