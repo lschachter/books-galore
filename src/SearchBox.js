@@ -15,12 +15,11 @@ export default class SearchBox extends React.Component {
   }
 
   handleChange = e => {
-    const target = e.target
-    const value = target.value
-    const name = target.name
+    const target = e.target;
+    const value = target.value;
 
     this.setState({
-      [name]: value,
+      searchTopic: value,
       numBooks: 0
     });
   }
@@ -32,10 +31,10 @@ export default class SearchBox extends React.Component {
     }
     else {
     	search(this.state.searchTopic, 0)
-        .then((books_json) => 
+        .then((booksJson) => 
           this.setState({
-            books: books_json.items,
-            numBooks: books_json.length
+            books: booksJson.items,
+            numBooks: booksJson.totalItems
           }))
         .catch(err => console.log(err)
       )
