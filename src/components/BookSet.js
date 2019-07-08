@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BookTile from "./BookTile"
-import { search } from "./utilities/search";
+import { search } from ".././utilities/search";
 
 export default class BookSet extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class BookSet extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  // DidMount and WillUnmount allow for infinite scroll effect
   componentDidMount = e => {
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -32,6 +33,8 @@ export default class BookSet extends React.Component {
     });
   }
 
+  // The API doesn't return books in exactly the same order.
+  // this ensures each book (and thus it's key) is unique
   filterBooks = books => {
     return [
       ...new Map (
@@ -42,6 +45,7 @@ export default class BookSet extends React.Component {
     ]
   }
 
+  // fetches new books and updates the startIndex accordingly on scroll to page-bottom
   handleScroll = e => {
     let container = e.target.body;
     if (window.innerHeight + window.pageYOffset === container.scrollHeight) { 

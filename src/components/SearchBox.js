@@ -1,11 +1,13 @@
 import React from "react"
 
 import BookSet from "./BookSet"
-import { search } from "./utilities/search";
+import { search } from ".././utilities/search";
 
 export default class SearchBox extends React.Component {
 	constructor(props) {
     super(props);
+    // numBooks holds how many books the fetch returned, in case
+    // message should be displayed of no books or later, no more books
     this.state = {
       searchTopic: "",
       numBooks: 0

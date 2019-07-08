@@ -1,4 +1,5 @@
 
+// limits content to fit on bookTile
 export const cropInfoStr = (infoStr, maxLen) => {
 	if (infoStr === undefined) {
 		return "";

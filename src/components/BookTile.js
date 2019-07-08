@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cropInfoStr } from "./utilities/cropInfoStr";
+import { cropInfoStr } from ".././utilities/cropInfoStr";
 
 export default class BookTile extends React.Component {
 	render() {
@@ -16,6 +16,7 @@ export default class BookTile extends React.Component {
 			authors = authors[0];
 		}
 
+		// trunc for truncated content 
 		let truncTitle = cropInfoStr(bookInfo.title, 28);
 		let truncAuthors = cropInfoStr(authors, 25);
 		let truncPubs = cropInfoStr(bookInfo.publisher, 18);

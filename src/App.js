@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 
-import SearchBox from "./SearchBox"
-import ErrorHandler from "./ErrorHandler"
+import SearchBox from "./components/SearchBox"
+import ErrorHandler from "./components/ErrorHandler"
 
 function App() {
   return (
@@ -12,7 +12,13 @@ function App() {
       </header>
       <h2>Welcome!</h2>
       <p className="instruction">
-        Enter a topic into the search bar below to see <a href="https://developers.google.com/books/docs/overview">Google Books</a>' top ten related volumes.
+        Enter a topic into the search bar below to see "
+        <a href="https://developers.google.com/books/docs/overview"
+          target = "_blank"
+          rel="noopener noreferrer">
+          Google Books
+        </a>
+        "' top ten related volumes.
       </p>
       <ErrorHandler>
         <SearchBox />
