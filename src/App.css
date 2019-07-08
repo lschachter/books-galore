@@ -22,7 +22,7 @@
 
 .book-set {
   margin: 20px;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   vertical-align: bottom;
 }
 
@@ -45,6 +45,10 @@
   padding-top: 10px;
   height: 200px;
   vertical-align: middle;
+}
+
+.pointing {
+  cursor: pointer;
 }
 
 .book-tile img {

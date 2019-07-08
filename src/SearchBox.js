@@ -8,7 +8,8 @@ export default class SearchBox extends React.Component {
     super(props);
     this.state = {
       searchTopic: "",
-      books: []
+      books: [],
+      newBooks: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,24 +27,23 @@ export default class SearchBox extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-
     if (this.state.searchTopic === "") {
     	alert(`Please enter a topic to search`);
     }
     else {
     	search(this.state.searchTopic, 0)
-        .then((books_json) =>
+        .then((books_json) => 
           this.setState({
-            books: books_json.items
+            books: books_json.items,
+            newBooks: true
           }))
         .catch(err => console.log(err)
-      );
+      )
     }
   }
 
   // this should send books back up to app, not logical parent for book set
   render() {
-    const books_received = this.state.books.length > 0;
     return (
     	<div>
 	      <form onSubmit={this.handleSubmit}>
@@ -58,7 +58,8 @@ export default class SearchBox extends React.Component {
 	        </label>
 	        <button type="submit">Submit</button>
 	      </form>
-        { books_received ? (
+        { 
+          this.state.newBooks ? (
             <BookSet books={this.state.books} searchTopic={this.state.searchTopic}
             startIndex={10} />
           ) : (

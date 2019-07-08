@@ -16,9 +16,9 @@ export default class BookTile extends React.Component {
 			authors = authors[0];
 		}
 
-		let truncTitle = cropInfoStr(bookInfo.title, 25);
-		let truncAuthors = cropInfoStr(authors, 25);
-		let truncPubs = cropInfoStr(bookInfo.publisher, 20);
+		let truncTitle = cropInfoStr(bookInfo.title, 28);
+		let truncAuthors = cropInfoStr(authors, 28);
+		let truncPubs = cropInfoStr(bookInfo.publisher, 18);
 
 		return (
 			<div className="book-tile">
