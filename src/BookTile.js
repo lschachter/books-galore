@@ -20,7 +20,7 @@ export default class BookTile extends React.Component {
 		let truncAuthors = cropInfoStr(authors, 25);
 		let truncPubs = cropInfoStr(bookInfo.publisher, 18);
 
-		let hasImg = bookInfo.imageLinks !== undefined
+		let hasImg = bookInfo.imageLinks !== undefined;
 
 		return (
 			<div className="book-tile">
