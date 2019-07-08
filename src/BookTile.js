@@ -17,15 +17,17 @@ export default class BookTile extends React.Component {
 		}
 
 		let truncTitle = cropInfoStr(bookInfo.title, 28);
-		let truncAuthors = cropInfoStr(authors, 28);
+		let truncAuthors = cropInfoStr(authors, 25);
 		let truncPubs = cropInfoStr(bookInfo.publisher, 18);
+
+		let hasImg = bookInfo.imageLinks !== undefined
 
 		return (
 			<div className="book-tile">
 				<a href={bookInfo.infoLink}
 					target = "_blank"
           rel="noopener noreferrer">
-          { bookInfo.imageLinks !== undefined ? ( 
+          { hasImg ? ( 
           	<div className="book-img-container">
 							<img 
 								src={bookInfo.imageLinks.thumbnail} 
@@ -33,7 +35,9 @@ export default class BookTile extends React.Component {
 							/>
 						</div>
 						) : (
-	            <div></div>
+	            <div className="no-img">
+	            	<p>No image avaiable</p>
+	            </div>
 	          )
           }
 				</a>

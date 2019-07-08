@@ -47,8 +47,9 @@
   vertical-align: middle;
 }
 
-.pointing {
-  cursor: pointer;
+.no-img {
+  margin-top: 103px;
+  margin-bottom: 103px;
 }
 
 .book-tile img {

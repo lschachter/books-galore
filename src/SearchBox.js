@@ -7,9 +7,7 @@ export default class SearchBox extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      searchTopic: "",
-      books: [],
-      newBooks: false
+      searchTopic: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,8 +32,7 @@ export default class SearchBox extends React.Component {
     	search(this.state.searchTopic, 0)
         .then((books_json) => 
           this.setState({
-            books: books_json.items,
-            newBooks: true
+            books: books_json.items
           }))
         .catch(err => console.log(err)
       )
@@ -59,7 +56,7 @@ export default class SearchBox extends React.Component {
 	        <button type="submit">Submit</button>
 	      </form>
         { 
-          this.state.newBooks ? (
+          this.state.books ? (
             <BookSet books={this.state.books} searchTopic={this.state.searchTopic}
             startIndex={10} />
           ) : (
