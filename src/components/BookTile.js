@@ -23,6 +23,11 @@ export default class BookTile extends React.Component {
 
 		let hasImg = bookInfo.imageLinks !== undefined;
 
+		if (hasImg) {
+			let imgURL = bookInfo.imageLinks.thumbnail;
+			imgURL.replace('http', 'https');
+		}
+
 		return (
 			<div className="book-tile">
 				<a href={bookInfo.infoLink}

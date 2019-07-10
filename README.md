@@ -45,3 +45,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 - Make staging branch so tests don't get deployed
 - Add additional testing (plans in test files)
+- Specify fields from api to minimize json response load
