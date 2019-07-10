@@ -41,3 +41,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+#### Next Steps
+
+- Make staging branch so tests don't get deployed
+- Add additional testing (stubs in test files)

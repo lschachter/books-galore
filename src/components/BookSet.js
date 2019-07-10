@@ -49,19 +49,23 @@ export default class BookSet extends React.Component {
   handleScroll = e => {
     let container = e.target.body;
     if (window.innerHeight + window.pageYOffset === container.scrollHeight) { 
-      search(this.props.searchTopic, this.state.startIndex)
-        .then(booksJson => {
-          let numNewBooks = booksJson.totalItems;
-          let newBookSet = numNewBooks > 0 ? 
-            this.filterBooks(this.state.books.concat(booksJson.items)) : this.state.books;
-          this.setState({
-            books: newBookSet,
-            startIndex: this.state.startIndex + 10,
-            numBooks: numNewBooks
-          })
-        })
-        .catch(err => console.log(err));
+      this.waitForSearch();
     }
+  }
+
+  waitForSearch = () => {
+    search(this.props.searchTopic, this.state.startIndex)
+      .then(booksJson => {
+        let numNewBooks = booksJson.totalItems;
+        let newBookSet = numNewBooks > 0 ? 
+          this.filterBooks(this.state.books.concat(booksJson.items)) : this.state.books;
+        this.setState({
+          books: newBookSet,
+          startIndex: this.state.startIndex + 10,
+          numBooks: numNewBooks
+        })
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -76,7 +80,9 @@ export default class BookSet extends React.Component {
         }
         {
           this.state.numBooks < 10 &&
-          <p>These are all the books on {this.props.searchTopic} we could find. Check out a new topic!</p>
+          <p id="no-more-books-msg">
+            These are all the books on {this.props.searchTopic} we could find. Check out a new topic!
+          </p>
         }
       </div>
     );

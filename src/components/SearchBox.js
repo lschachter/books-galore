@@ -10,7 +10,7 @@ export default class SearchBox extends React.Component {
     // message should be displayed of no books or later, no more books
     this.state = {
       searchTopic: "",
-      numBooks: 0
+      numBooks: -1
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ export default class SearchBox extends React.Component {
 
     this.setState({
       searchTopic: value,
-      numBooks: 0
+      numBooks: -1
     });
   }
 
@@ -30,17 +30,19 @@ export default class SearchBox extends React.Component {
     e.preventDefault()
     if (this.state.searchTopic === "") {
     	alert(`Please enter a topic to search`);
+    } else {
+    	this.waitForInitialSearch();
     }
-    else {
-    	search(this.state.searchTopic, 0)
-        .then((booksJson) => 
-          this.setState({
-            books: booksJson.items,
-            numBooks: booksJson.totalItems
-          }))
-        .catch(err => console.log(err)
-      )
-    }
+  }
+
+  waitForInitialSearch = () => {
+    search(this.state.searchTopic, 0)
+      .then((booksJson) => 
+        this.setState({
+          books: booksJson.items,
+          numBooks: booksJson.totalItems
+        }))
+      .catch(err => console.log(err));
   }
 
   // this should send books back up to app, not logical parent for book set
@@ -60,8 +62,8 @@ export default class SearchBox extends React.Component {
 	        <button type="submit">Submit</button>
 	      </form>
         {
-          this.state.numBooks === undefined &&
-          <p>Sorry, we couldn't find any books on {this.state.searchTopic}. Check out a different topic instead!</p>
+          this.state.numBooks === 0 &&
+          <p id="no-books-msg">Sorry, we couldn't find any books on '{this.state.searchTopic}'. Check out a different topic instead!</p>
         }
         { 
           this.state.books && 
