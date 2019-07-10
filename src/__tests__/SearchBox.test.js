@@ -8,10 +8,14 @@ import SearchBox from ".././components/SearchBox"
 import BookSet from ".././components/BookSet"
 
 describe('<SearchBox />', () => {
-	it('initially renders without a <BookSet /> or error message, then creates one', () => {
+	it('initially renders without a <BookSet /> or error message', () => {
 		const wrapper = shallow(<SearchBox />);
 		expect(wrapper.exists(BookSet)) === false;
 		expect(wrapper.find('#no-books-msg')) === false;
+	});
+
+	it('renders with a <Bookset /> and no books img when state requires', () => {
+		const wrapper = shallow(<SearchBox />);
 		wrapper.setState({
 			books: {}
 		});

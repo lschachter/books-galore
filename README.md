@@ -44,4 +44,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### Next Steps
 
 - Make staging branch so tests don't get deployed
-- Add additional testing (stubs in test files)
+- Add additional testing (plans in test files)

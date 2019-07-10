@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 import BookTile from ".././components/BookTile";
-import exampleData from "./exampleData.json";
+import exampleData from "./testData/exampleData.json";
 
 describe('<BookTile />', () => {
 	it('renders successfully', () => {
