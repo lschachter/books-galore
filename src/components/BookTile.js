@@ -36,7 +36,7 @@ export default class BookTile extends React.Component {
           { hasImg ? ( 
           	<div className="book-img-container">
 							<img 
-								src={bookInfo.imageLinks.thumbnail} 
+								src={imgURL} 
 								alt={alt}
 							/>
 						</div>
