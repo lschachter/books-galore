@@ -10,13 +10,13 @@ import exampleData from "./testData/exampleData.json";
 
 describe('<BookSet />', () => {
 	it('renders successfully', () => {
-		const wrapper = shallow(<BookSet books={exampleData.data} startIndex={10} searchTopic="hello" numBooks={10}/>);
+		const wrapper = shallow(<BookSet books={exampleData.data} startIndex={10} searchTopic="hello"/>);
 		expect(wrapper.find('#no-more-books-msg')) === false;
 		expect(wrapper.exists(BookTile));
 	});
 
 	it('renders successfully with no more books message', () => {
-		const wrapper = shallow(<BookSet books={exampleData.data} startIndex={10} searchTopic="hello" numBooks={10}/>);
+		const wrapper = shallow(<BookSet books={exampleData.data} startIndex={10} searchTopic="hello"/>);
 		wrapper.setState({
 			numBooks: 5
 		});
@@ -43,6 +43,10 @@ describe('<BookSet />', () => {
 	});
 
 	it('allows for infinite scroll even if screen is giant', () => {
+	
+	});
+
+	it('handles a single book correctly', () => {
 	
 	});
 

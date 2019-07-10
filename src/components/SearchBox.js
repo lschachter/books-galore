@@ -68,7 +68,7 @@ export default class SearchBox extends React.Component {
         { 
           this.state.books && 
           <BookSet books={this.state.books} searchTopic={this.state.searchTopic}
-          startIndex={10} numBooks={this.state.numBooks}/>
+          startIndex={10}/>
         }  
 	    </div>
     )

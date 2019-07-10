@@ -22,9 +22,10 @@ export default class BookTile extends React.Component {
 		let truncPubs = cropInfoStr(bookInfo.publisher, 18);
 
 		let hasImg = bookInfo.imageLinks !== undefined;
+		let imgURL = "";
 
 		if (hasImg) {
-			let imgURL = bookInfo.imageLinks.thumbnail;
+			imgURL = bookInfo.imageLinks.thumbnail;
 			imgURL.replace('http', 'https');
 		}
 
