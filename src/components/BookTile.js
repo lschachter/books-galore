@@ -26,7 +26,9 @@ export default class BookTile extends React.Component {
 
 		if (hasImg) {
 			imgURL = bookInfo.imageLinks.thumbnail;
-			imgURL.replace('http', 'https');
+			imgURL = imgURL.replace('http', 'https');
+			console.log(imgURL);
+
 		}
 
 		return (
